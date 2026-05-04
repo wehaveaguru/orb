@@ -18,3 +18,4 @@ client.on('message',ms=>{
     }
 })
 
+client.login(process.env.DISCORD_TOKEN);
