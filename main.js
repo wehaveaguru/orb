@@ -8,8 +8,16 @@ const client = new Client({
   intents: [
     GatewayIntentBits.Guilds,
     GatewayIntentBits.GuildMessages,
+	GatewayIntentBits.GuildMembers,
+	GatewayIntentBits.GuildInvites,
+	
   ]
 });
+
+client.on('guildMemberAdd',async(member)=> {
+	    const channel=member.guild.channels.cache.get('1501108440616140810')
+		channel.send(`Welcome ${member.user}`)
+})
 
 client.on(Events.InteractionCreate, async (interaction)=> {
   if (!interaction.isChatInputCommand) return; // checks if user accessed a slash command or not
