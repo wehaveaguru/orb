@@ -1,4 +1,4 @@
-const { Client, Collection, Events, GatewayIntentBits, MessageFlags } = require('discord.js');
+const { Client, Collection, Events, GatewayIntentBits, MessageFlags, EmbedBuilder } = require('discord.js');
 const fs = require('node:fs');
 const path = require('node:path');
 
@@ -16,7 +16,19 @@ const client = new Client({
 
 client.on('guildMemberAdd',async(member)=> {
 	    const channel=member.guild.channels.cache.get('1501108440616140810')
-		channel.send(`Welcome ${member.user}`)
+		const exampleEmbed = new EmbedBuilder()
+		.setColor(0x0099ff)
+		.setTitle('Guru Baka UWU')
+		.setAuthor({ name: `${member.user.username}`, iconURL: `${member.displayAvatarURL()}`, url: 'https://discord.js.org' })
+		.setThumbnail('https://i.imgur.com/AfFp7pu.png')
+		.addFields(
+			{ name: 'Welcome!', value: `${member.user.username}` }
+		)
+		.setImage('https://i.imgur.com/AfFp7pu.png')
+		.setTimestamp()
+		.setFooter({ text: 'Read Rules', iconURL: 'https://i.imgur.com/AfFp7pu.png' });
+
+	channel.send({ embeds: [exampleEmbed] });
 })
 
 client.on(Events.InteractionCreate, async (interaction)=> {
