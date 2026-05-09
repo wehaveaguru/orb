@@ -59,8 +59,8 @@ client.on(Events.InteractionCreate, async (interaction)=> {
 	}
 })
 
-client.once('ready', () => {
-  console.log(`✅ Logged in as ${client.user.tag}`);
+client.once('clientReady', () => {
+  console.log(`Logged in as ${client.user.tag}`);
 });
 
 
